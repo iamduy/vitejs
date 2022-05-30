@@ -1,5 +1,5 @@
 import React from 'react';
-const PublicLayout: React.FC = ({ children }: any) => {
+const PublicLayout: React.FC<any> = ({ children }) => {
   return <div>{children}</div>;
 };
 

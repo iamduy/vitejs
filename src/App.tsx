@@ -1,23 +1,33 @@
+import { privateRoutes, publicRoutes } from '@config';
+import PrivateLayout from '@templates/private';
+import PublicLayout from '@templates/public';
+import { IRoute } from '@types';
 import 'antd/dist/antd.css';
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { privateRoutes, publicRoutes } from '@config';
-import { IRoute } from '@types';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const App: React.FC = (props) => {
   console.log(import.meta.env);
-  const isLoggedIn = false;
+  const isAuth = null;
   const printRoutes = (routes: IRoute[]) => {
-    return routes.map((route, index) => (
-      <Route
-        key={index}
-        path={route.path}
-        element={<route.element name={route.name} {...props} {...route.props} />}
-      />
-    ));
+    return (
+      <Routes>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            element={<route.element name={route.name} {...props} {...route.props} />}
+          />
+        ))}
+      </Routes>
+    );
   };
   return (
     <BrowserRouter>
-      <Routes>{printRoutes(isLoggedIn ? privateRoutes : publicRoutes)}</Routes>
+      {isAuth ? (
+        <PrivateLayout>{printRoutes(privateRoutes)}</PrivateLayout>
+      ) : (
+        <PublicLayout>{printRoutes(publicRoutes)}</PublicLayout>
+      )}
     </BrowserRouter>
   );
 };

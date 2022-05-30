@@ -3,18 +3,6 @@ import HomePage from '@pages/Auths/Home';
 import UsersManage from '@pages/Auths/Users';
 import Login from '@pages/UnAuths/Login';
 import Register from '@pages/UnAuths/Register';
-const routes: IRoute[] = [
-  {
-    path: '/',
-    name: 'Home Page',
-    element: HomePage,
-  },
-  {
-    path: '/users',
-    name: 'Users Page',
-    element: UsersManage,
-  },
-];
 
 export const privateRoutes: IRoute[] = [
   {
@@ -46,5 +34,3 @@ export const publicRoutes: IRoute[] = [
     element: Register,
   },
 ];
-
-export default routes;

@@ -1,5 +1,5 @@
 import React from 'react';
-const PrivateLayout: React.FC = ({ children }: any) => {
+const PrivateLayout: React.FC<any> = ({ children }) => {
   return (
     <>
       <div>{children}</div>
