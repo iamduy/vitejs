@@ -25,7 +25,7 @@ Etc...
 1. Clone Template
 
 ```
-git clone https://github.com/iamduy/vite.git
+git clone https://github.com/iamduy/vitejs.git
 ```
 
 2. Install Packages
