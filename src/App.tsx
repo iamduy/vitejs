@@ -1,34 +1,38 @@
-import { privateRoutes, publicRoutes } from '@config';
-import PrivateLayout from '@templates/private';
-import PublicLayout from '@templates/public';
-import { IRoute } from '@types';
-import 'antd/dist/antd.css';
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Routes from "@config/routes";
+import { useTranslation } from "@hooks";
+import "@i18n";
+import { Loading } from "@molecules";
+import store from "@redux/store";
+import "@styles/global.scss";
+import { ConfigProvider } from "antd";
+import "antd/dist/antd.css";
+import en from "antd/lib/locale/en_US";
+import jp from "antd/lib/locale/ja_JP";
+import React, { Suspense } from "react";
+import LoadingOverlayWrapper from "react-loading-overlay-ts";
+import { Provider } from "react-redux";
+
 const App: React.FC = (props) => {
-  console.log(import.meta.env);
-  const isAuth = null;
-  const printRoutes = (routes: IRoute[]) => {
-    return (
-      <Routes>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={<route.element name={route.name} {...props} {...route.props} />}
-          />
-        ))}
-      </Routes>
-    );
-  };
+  const { i18n } = useTranslation();
+
   return (
-    <BrowserRouter>
-      {isAuth ? (
-        <PrivateLayout>{printRoutes(privateRoutes)}</PrivateLayout>
-      ) : (
-        <PublicLayout>{printRoutes(publicRoutes)}</PublicLayout>
-      )}
-    </BrowserRouter>
+    <Suspense
+      fallback={
+        <LoadingOverlayWrapper
+          active={true}
+          spinner
+          className="loading-overlay"
+        />
+      }
+    >
+      <Provider store={store}>
+        <Loading>
+          <ConfigProvider locale={i18n.language?.includes("en") ? en : jp}>
+            <Routes {...props} />
+          </ConfigProvider>
+        </Loading>
+      </Provider>
+    </Suspense>
   );
 };
 

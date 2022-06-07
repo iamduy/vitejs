@@ -1,9 +1,8 @@
-import React from 'react';
-import { IPage } from '@types';
-const UsersManage: React.FC<IPage> = (props) => {
+import React from "react";
+const UsersManage = () => {
   return (
     <>
-      <div>{props.name}</div>
+      <div>User Page</div>
     </>
   );
 };

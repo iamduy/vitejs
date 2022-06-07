@@ -1,0 +1,42 @@
+@use 'variables';
+.layout {
+  height: 100vh;
+  background: white !important;
+}
+.sider {
+  background: white !important;
+}
+.header {
+  background: white !important;
+  border-bottom: 2px solid variables.$primary;
+  padding: 0;
+  min-width: 850px;
+  :global .logo-image {
+    pointer-events: none;
+  }
+}
+.languageSelect {
+  margin-left: 40px;
+  position: relative;
+}
+.content {
+  padding: 10px 30px 0 30px;
+  overflow: auto;
+}
+.contentBody {
+  height: calc(100vh - 140px);
+  min-width: 500px;
+  background: #ffffff !important;
+}
+.navbarRight {
+  text-align: right;
+  padding-right: 75px;
+  min-width: 400px !important;
+  display: inline;
+ 
+  :global .importCSV {
+    margin-right: 20px;
+    background-color: variables.$primary !important;
+    color: white;
+  }
+}

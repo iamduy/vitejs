@@ -5,5 +5,5 @@ export interface IRoute {
   props?: any;
 }
 export interface IPage {
-  name: string;
+  name?: string;
 }

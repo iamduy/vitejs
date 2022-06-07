@@ -1,0 +1,12 @@
+@use "variables";
+.langItem {
+  color: variables.$text_secondary;
+  cursor: pointer;
+}
+.selected {
+  font-weight: variables.$font_weight_bold;
+  color: variables.$text_primary2;
+}
+.customColor {
+  color: #FAFAFA;
+}
